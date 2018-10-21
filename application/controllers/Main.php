@@ -11,19 +11,17 @@ class Main extends CI_Controller {
 
 	public function index()
 	{
-		$data['title'] = 'KiniOnline';
+		$data['title'] = 'Klinik My Dentist';
         $data['pages'] = $this->load->view('pages/stepone','',true);
 		$this->load->view('master',array('main'=>$data));
 	}
 
 	function create_booking()
     {
-		// $op = $this->input->post('op');
-	    // $id = $this->input->post('id');
 		$data ['nama']= $this->input->post('nama');
 		$data ['email']= $this->input->post('email');
 		$data ['nohp']= $this->input->post('nohp');
 		$this->m_booking->create_booking($data);
-        redirect('main');
+        redirect('steptwo');
 	}
 }
