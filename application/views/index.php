@@ -1,50 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style4.css" type="text/css">
-    <link href="<?php echo base_url();?>assets/css/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery-3.3.1.min.js"></script>
+    
+    
     <title>Reservasi Online</title>
 </head>
 <body>
 
-<div id="myNavbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" name="button1" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-
-      <a href="#" class="navbar-brand">Media</a>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#header">Home</a></li>
-        <li><a href="#services">Service</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#client">Clients</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
 
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<h2 class="text-center font-bold pt-4 pb-5 mb-5"><strong>Reservasi Online</strong></h2>
+
+
 
 <!-- Stepper -->
 <div class="steps-form-2">
@@ -69,8 +36,7 @@
 </div>
 
 <!-- First Step -->
-
-<form role="form" action="" method="post">
+<?php echo form_open_multipart('main/create_booking/');?>
 <div class="content">
     <div class="row setup-content-2" id="step-1">
     <p>Harap masukan data diri anda terlebih dahulu untuk melanjutkan melakukan pemesanan</p>
@@ -78,25 +44,26 @@
     <br>    
         <div class="col-md-14">
                 <label for="yourEmail-2" data-error="wrong" data-success="right">Nama</label>
-                <input id="yourEmail-2" type="email" required="required" class="form-control validate">
+                <input id="yourEmail-2" type="text" name="nama" required="required" class="form-control validate">
                 <br>
         </div>
         <div class="col-md-14">
                 <label for="yourUsername-2" data-error="wrong" data-success="right">Email</label>
-                <input id="yourUsername-2" type="text" required="required" class="form-control validate">
+                <input id="yourUsername-2" type="email" name="email" required="required" class="form-control validate">
                 <br>
         </div>
         <div class="col-md-14">
                 <label for="yourUsername-2" data-error="wrong" data-success="right">No Hp</label>
-                <input id="yourUsername-2" type="number" required="required" class="form-control validate">
+                <input id="yourUsername-2" type="number" name="nohp" required="required" class="form-control validate">
                 <br>
         </div>
         <div class="col-md-14">
-            <button class="btn btn-primary nextBtn-2" type="button" href="#step-2">Next</button>
+            <button class="btn btn-primary nextBtn-2" type="submit" href="#step-2">Next</button>
         </div>
         
     </div>
 </div>
+</form>
 
 <!-- Second Step -->
 <div class="content">
@@ -158,7 +125,6 @@
             <h2 class="text-center font-weight-bold my-4">Registration completed!</h2>
         </div>
     </div>
-</form>
 
 <script type="text/javascript">
                     $(function () {
@@ -229,38 +195,5 @@ $(document).ready(function () {
 });
 </script>
 
-
-
-  <!-- FOOTER -->
-  <div class="footer" id="footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-4">
-        <h4 class="wow fadeInUp">Contact Us</h4>
-        <p><i class="fa fa-home" aria-hidden="true"></i> 1111 Main Street Of Balandongan, 22222 </p>
-        <p><i class="fa fa-envelope" aria-hidden="true"></i> angga.riansah332@gmail.com </p>
-        <p><i class="fa fa-phone" aria-hidden="true"></i> 22222222 </p>
-        <p><i class="fa fa-globe" aria-hidden="true"></i> www.tukarbuku.com </p>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <h4>About</h4>
-        <p><i class="fa fa-square-o" aria-hidden="true"></i> about us </p>
-        <p><i class="fa fa-square-o" aria-hidden="true"></i>  Privacy </p>
-        <p><i class="fa fa-square-o" aria-hidden="true"></i> Term and Condition </p>
-      </div>
-      <div class="col-lg-4 col-md-4">
-        <h4>Stay In touch</h4>
-        <i class="social fa fa-facebook" aria-hidden="true"></i>
-        <i class="social fa fa-twitter" aria-hidden="true"></i>
-        <i class="social fa fa-linkedin" aria-hidden="true"></i>
-        <i class="social fa fa-pinterest" aria-hidden="true"></i>
-        <i class="social fa fa-youtube" aria-hidden="true"></i>
-        <i class="social fa fa-github" aria-hidden="true"></i><br>
-        <input type="email" name="name" value="" placeholder="Subscribe for Updates">
-        <button type="button" name="button" class="btn btn-success">Subscribe</button>
-      </div>
-    </div>
-  </div>
-</div>
 </body>
 </html>
