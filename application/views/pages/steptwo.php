@@ -53,8 +53,12 @@
                 <label for="sel1">Pilih Dokter</label>
                 <select class="form-control" id="sel1" name="dokter">
                     <option value="">Pilih Dokter</option>
-                    <option value="1">Rudi Wiantos</option>
-                    <option value="2">Angga Riansah</option>
+                    <?php foreach ($main['iddokter']->result() as $obj) {
+                        echo "<option value='".$obj->id."'>
+                        ".$obj->name."
+                        </option>";
+                        }
+                    ?>
                 </select>
                 <br>
             </div>
