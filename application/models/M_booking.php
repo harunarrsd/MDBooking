@@ -8,7 +8,7 @@ class M_booking extends CI_Model {
     }
 
     function get_last_id(){
-        $sql = $this->db->query("SELECT idbooking FROM booking ORDER BY idbooking DESC LIMIT 1");
+        $sql = $this->db->query("SELECT * FROM booking ORDER BY idbooking DESC LIMIT 1");
         return $sql;
     }
 

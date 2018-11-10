@@ -185,4 +185,12 @@
     margin: -3px 0 0 5px;
   
   }
-  
+
+/*Header*/
+#myNavbar img{
+  width: 12%;
+  margin-top: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

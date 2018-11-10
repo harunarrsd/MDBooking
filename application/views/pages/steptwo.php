@@ -25,15 +25,19 @@
 <?php 
     foreach($main['id']->result() as $obj){
         $id = $obj->idbooking;
+        $nama = $obj->nama;
+        $email = $obj->email;
+        $nohp = $obj->nohp;
     }
 ?>
 <input type="hidden" name="id" value="<?php echo $id;?>">
 
     <div class="content">
         <div class="row setup-content-2" id="step-2">
-        <p>Halo Angga Riansah Email anda : anggariansah dan no hp HP : 084542</p>
-        <br>
-        <br>
+            <div class="alert alert-info alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <strong>Halo!</strong> <?php echo $nama;?>, Email Anda : <?php echo $email;?> dan No.HP : <?php echo $nohp;?>.
+            </div>
             <div class="col-md-14">
                 <label for="sel1">Pilih Cabang</label>
                 <select class="form-control" id="sel1" name="cabang">

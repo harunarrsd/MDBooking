@@ -24,9 +24,10 @@
 <?php echo form_open_multipart('main/create_booking/');?>
     <div class="content">
         <div class="row setup-content-2" id="step-1">
-        <p>Harap masukan data diri anda terlebih dahulu untuk melanjutkan melakukan pemesanan</p>
-        <br>
-        <br>    
+            <div class="alert alert-info" role="alert">
+              <strong>Info!</strong> Harap masukan data diri anda terlebih dahulu untuk melanjutkan melakukan pemesanan.
+            </div>
+
             <div class="col-md-14">
                     <label for="yourEmail-2" data-error="wrong" data-success="right">Nama</label>
                     <input id="yourEmail-2" type="text" name="nama" required="required" class="form-control validate">
