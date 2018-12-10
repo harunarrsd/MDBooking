@@ -21,4 +21,9 @@ class M_booking extends CI_Model {
 		$this->db->where("idbooking",$id);
         $this->db->update('booking',$data);
     }
+
+    function cabang(){
+        $sql = $this->db->query("SELECT * FROM cabang");
+        return $sql;
+    }
 }

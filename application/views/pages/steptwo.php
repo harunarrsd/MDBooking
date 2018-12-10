@@ -85,6 +85,16 @@
                     <i class="fa fa-gift"></i>Form Reservasi </div>
             </div>
             <div class="portlet-body form">
+                <!-- <div class="row">
+                    <?php foreach ($main['cabang']->result() as $obj) {
+                        ?>
+                        <div class="col-lg-6">
+                            <img src="<?php echo $foto = $obj->foto;;?>" width="100%" style="padding: 15px;">
+                        </div>
+                    <?php
+                        }
+                    ?>
+                </div> -->
                 <!-- BEGIN FORM-->
                 <form class="form-horizontal" role="form">
                     <div class="form-body">
@@ -92,12 +102,27 @@
                             <div class="col-md-2"></div>
                                 <div class="col-md-8">
                                 <br>
-                                <label for="sel1">Pilih Cabang</label>
-                                    <select class="form-control" id="sel1" name="cabang">
+                                <label for="sel1">Pilih Cabang</label><br>
+                                    <!-- <select class="form-control" id="sel1" name="cabang">
                                         <option value="">Pilih Cabang</option>
-                                        <option value="1">Klinik MD Margonda</option>
-                                        <option value="2">Klinik MD ARH</option>
-                                    </select>
+                                        <?php foreach ($main['cabang']->result() as $obj) 
+                                            {
+                                        ?>
+                                            <option value="<?php echo $obj->idcabang;?>" data-thumbnail="<?php echo base_url();?>assets/image/Logo.png">
+                                                <?php echo $obj->nama;?>
+                                            </option>";
+                                        <?php
+                                            }
+                                        ?>
+                                    </select> -->
+                                    <div class="input-group">
+                                        <input type="text" name="idcabang" class="form-control" readonly>
+                                        <span class="input-group-btn">
+                                            <button class="btn default cal" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
+                                        </span>
+                                    </div>
                                     <br>
                                     <label for="sel1">Pilih Dokter</label>
                                     <select class="form-control" id="sel1" name="dokter">
@@ -124,7 +149,28 @@
             </div>
         </div>
       <!-- END BOX -->
-
-         
-      
 </form>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="row">
+        <?php 
+            foreach($main['cabang']->result() as $obj)
+            {
+        ?>
+          <div class="col-lg-6" style="margin-bottom:20px;">
+              <img src="<?php echo $obj->foto;?>" alt="" width="100%" style="margin-left:auto;margin-right:auto;display:block;padding:20px;">
+                <center>
+                    <h3><?php echo $obj->nama;?></h3>
+                    <p style="margin-left:20px;margin-right:20px;"><?php echo $obj->alamat;?></p>
+                    <a class="btn btn-primary" href="<?php echo site_url('.');?>">Pilih</a>
+                </center>
+          </div>
+        <?php
+            }
+        ?>
+        </div>
+    </div>
+  </div>
+</div>

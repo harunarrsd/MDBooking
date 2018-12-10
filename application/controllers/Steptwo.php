@@ -12,6 +12,7 @@ class Steptwo extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Klinik My Dentist';
+		$data['cabang'] = $this->m_booking->cabang();
 		$data['id'] = $this->m_booking->get_last_id();
 		$data['iddokter'] = $this->m_booking->get_id_dokter();
         $data['pages'] = $this->load->view('pages/steptwo',array('main'=>$data),true);
