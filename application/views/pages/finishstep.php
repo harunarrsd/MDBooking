@@ -19,10 +19,17 @@
         </div>
     </div>
 </div> -->
-
+<?php 
+    foreach($main['id']->result() as $obj){
+        $id = $obj->idbooking;
+        $nama = $obj->nama;
+        $email = $obj->email;
+        $nohp = $obj->nohp;
+    }
+?>
 
 <?php
-$dbName = "mydentist";
+$dbName = "klinikmy_dentist";
 $user = "root";
 $pwd = "";
 $host = "localhost";
@@ -83,8 +90,6 @@ function sendPushNotification($registration_ids, $message) {
 }
 ?>
 
-
-
 <!-- TEST -->
 <div class="portlet-body por">
 <div class="mt-element-step">
@@ -130,6 +135,8 @@ function sendPushNotification($registration_ids, $message) {
                 <!-- BEGIN FORM-->
                 <form class="form-horizontal" method="POST" action='' role="form">
                     <div class="form-body">
+
+                    <?php echo $nama;?>
                                 
                         <div class="row setup-content-2" id="step-4">
                         <div class="col-md-12">

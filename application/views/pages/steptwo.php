@@ -59,7 +59,6 @@
 
 
 <!-- Second Step -->
-<?php echo form_open_multipart('steptwo/update_booking/');?>
 <?php 
     foreach($main['id']->result() as $obj){
         $id = $obj->idbooking;
@@ -68,7 +67,19 @@
         $nohp = $obj->nohp;
     }
 ?>
-<input type="hidden" name="id" value="<?php echo $id;?>">
+<?php 
+    foreach($main['booking_cabang']->result() as $obj){
+        $idcabang = $obj->idcabang;
+        $nama_cabang = $obj->nama_cabang;
+    }
+?>
+<?php 
+    foreach($main['booking_users']->result() as $obj){
+        $iddokter = $obj->iddokter;
+        $name = $obj->name;
+    }
+?>
+<input type="text" name="id" value="<?php echo $id;?>">
 
     <div class="content">
 
@@ -85,16 +96,6 @@
                     <i class="fa fa-gift"></i>Form Reservasi </div>
             </div>
             <div class="portlet-body form">
-                <!-- <div class="row">
-                    <?php foreach ($main['cabang']->result() as $obj) {
-                        ?>
-                        <div class="col-lg-6">
-                            <img src="<?php echo $foto = $obj->foto;;?>" width="100%" style="padding: 15px;">
-                        </div>
-                    <?php
-                        }
-                    ?>
-                </div> -->
                 <!-- BEGIN FORM-->
                 <form class="form-horizontal" role="form">
                     <div class="form-body">
@@ -103,20 +104,8 @@
                                 <div class="col-md-8">
                                 <br>
                                 <label for="sel1">Pilih Cabang</label><br>
-                                    <!-- <select class="form-control" id="sel1" name="cabang">
-                                        <option value="">Pilih Cabang</option>
-                                        <?php foreach ($main['cabang']->result() as $obj) 
-                                            {
-                                        ?>
-                                            <option value="<?php echo $obj->idcabang;?>" data-thumbnail="<?php echo base_url();?>assets/image/Logo.png">
-                                                <?php echo $obj->nama;?>
-                                            </option>";
-                                        <?php
-                                            }
-                                        ?>
-                                    </select> -->
                                     <div class="input-group">
-                                        <input type="text" name="idcabang" class="form-control" readonly>
+                                        <input type="text" class="form-control" readonly value="<?php if($idcabang== NULL)echo 'Belum Memilih';echo $nama_cabang?>">
                                         <span class="input-group-btn">
                                             <button class="btn default cal" type="button" data-toggle="modal" data-target=".bs-example-modal-lg">
                                                 <i class="fa fa-clock-o"></i>
@@ -125,17 +114,16 @@
                                     </div>
                                     <br>
                                     <label for="sel1">Pilih Dokter</label>
-                                    <select class="form-control" id="sel1" name="dokter">
-                                        <option value="">Pilih Dokter</option>
-                                        <?php foreach ($main['iddokter']->result() as $obj) {
-                                            echo "<option value='".$obj->id."'>
-                                            ".$obj->name."
-                                            </option>";
-                                            }
-                                        ?>
-                                    </select>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" readonly value="<?php echo $name;?>">
+                                        <span class="input-group-btn">
+                                            <button class="btn default cal" type="button" data-toggle="modal" data-target=".bs-example-modal-lg2">
+                                                <i class="fa fa-clock-o"></i>
+                                            </button>
+                                        </span>
+                                    </div>
                                     <br>
-                                    <button class="btn btn-primary nextBtn-2 " type="submit">Next</button>
+                                    <button class="btn btn-primary nextBtn-2 " type="submit"><a href="<?php echo site_url('stepthree')?>" style="color: #fff;">Next</a></button>
                                     <br>
                                     <br>
                                 </div>
@@ -160,14 +148,74 @@
             {
         ?>
           <div class="col-lg-6" style="margin-bottom:20px;">
-              <img src="<?php echo $obj->foto;?>" alt="" width="100%" style="margin-left:auto;margin-right:auto;display:block;padding:20px;">
-                <center>
-                    <h3><?php echo $obj->nama;?></h3>
-                    <p style="margin-left:20px;margin-right:20px;"><?php echo $obj->alamat;?></p>
-                    <a class="btn btn-primary" href="<?php echo site_url('.');?>">Pilih</a>
-                </center>
+          <div class="panel panel-default" style="margin:20px;">
+                <div class="panel-body">
+                    <?php echo form_open_multipart('steptwo/update_cabang/');?>
+                        <input type="hidden" name="id" value="<?php echo $id;?>">
+                        <input type="hidden" name="cabang" value="<?php echo $obj->idcabang;?>">
+                        <img src="<?php echo $obj->foto;?>" alt="" width="100%" style="margin-left:auto;margin-right:auto;display:block;padding:10px;">
+                            <center>
+                                <h3><?php echo $obj->nama_cabang;?></h3>
+                                <p style="margin-left:20px;margin-right:20px;"><?php echo $obj->alamat;?></p>
+                                <button class="btn btn-primary nextBtn-2 " type="submit">Pilih</button>
+                            </center>
+                    </form>
+                </div>
+          </div>
           </div>
         <?php
+            }
+        ?>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade bs-example-modal-lg2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+        <div class="row">
+        <?php 
+            if($idcabang == 1){
+                foreach($main['sql']->result() as $obj)
+                {
+        ?>
+                <div class="col-lg-6" style="margin-bottom:20px;">
+                    <div class="panel panel-default" style="margin:20px;">
+                            <div class="panel-body">
+                                <?php echo form_open_multipart('steptwo/update_booking/');?>
+                                    <input type="text" name="id" value="<?php echo $id;?>">
+                                    <input type="text" name="dokter" value="<?php echo $obj->id;?>">
+                                    <img src="<?php echo $obj->gambar;?>" alt="" width="100%" style="margin-left:auto;margin-right:auto;display:block;padding:10px;">
+                                        <center>
+                                            <h3><?php echo $obj->name;?></h3>
+                                            <button class="btn btn-primary nextBtn-2 " type="submit">Pilih</button>
+                                        </center>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+        <?php   }
+            }else{
+                foreach($main['sql2']->result() as $obj)
+                {
+        ?>
+                <div class="col-lg-6" style="margin-bottom:20px;">
+                    <div class="panel panel-default" style="margin:20px;">
+                            <div class="panel-body">
+                                <?php echo form_open_multipart('steptwo/update_booking/');?>
+                                    <input type="text" name="id" value="<?php echo $id;?>">
+                                    <input type="text" name="dokter" value="<?php echo $obj->id;?>">
+                                    <img src="<?php echo $obj->gambar;?>" alt="" width="100%" style="margin-left:auto;margin-right:auto;display:block;padding:10px;">
+                                        <center>
+                                            <h3><?php echo $obj->name;?></h3>
+                                            <button class="btn btn-primary nextBtn-2 " type="submit">Pilih</button>
+                                        </center>
+                                </form>
+                            </div>
+                    </div>
+                </div>
+        <?php   }
             }
         ?>
         </div>

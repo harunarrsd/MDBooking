@@ -12,7 +12,8 @@ class Finishstep extends CI_Controller {
 	public function index()
 	{
 		$data['title'] = 'Klinik My Dentist';
-        $data['pages'] = $this->load->view('pages/finishstep','',true);
+		$data['id'] = $this->m_booking->get_last_id();
+        $data['pages'] = $this->load->view('pages/finishstep',array('main'=>$data),true);
 		$this->load->view('master',array('main'=>$data));
 		
 	}
