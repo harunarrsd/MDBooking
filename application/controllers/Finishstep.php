@@ -14,5 +14,6 @@ class Finishstep extends CI_Controller {
 		$data['title'] = 'Klinik My Dentist';
         $data['pages'] = $this->load->view('pages/finishstep','',true);
 		$this->load->view('master',array('main'=>$data));
+		
 	}
 }
